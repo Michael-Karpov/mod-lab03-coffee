@@ -19,24 +19,24 @@ Automata::Automata() {
 }
 void Automata::on() {
     if (this->State == OFF) {
-	this->State = WAIT;
-    }
+this->State = WAIT;
+    }	
 }
 void Automata::off() {
     if (this->State == WAIT) {
-	this->State = OFF;
+this->State = OFF;
     }
 }
 void Automata::coin(int m) {
     if (this->State == WAIT) {
-	this->State = ACCEPT;
+this->State = ACCEPT;
     }
     Cash += m;
 }
 void Automata::getMenu() {
     for (int i = 0; i < 4; i++) {
-	cout << i + 1 << ": " << Menu[i] << " " << Prices[i];
-	cout << '\n';
+cout << i + 1 << ": " << Menu[i] << " " << Prices[i];
+cout << '\n';
     }
 }
 STATES Automata::getState() {
@@ -44,36 +44,36 @@ STATES Automata::getState() {
 }
 void Automata::choice(int order) {
     if (this->State == ACCEPT) {
-	this->State = CHECK;
-	this->order = order;
+this->State = CHECK;
+this->order = order;
     }
 }
 bool Automata::check() {
-    if (this->State == CHECK && Cash >= Prices[order - 1]) 
-	    return true;
-	else return false;
+    if (this->State == CHECK && Cash >= Prices[order - 1])
+return true;
+  return false;
 }
 int Automata::cancel() {
     int cash2 = 0;
     if (this->State == ACCEPT || this->State == CHECK) {
-	this->State = WAIT;
-	cash2 = Cash;
-	Cash = 0;
+this->State = WAIT;
+cash2 = Cash;
+Cash = 0;
     }
     return cash2;
 }
 void Automata::cook() {
     if (this->State == CHECK) {
-        this->State = COOK;
-	Cash -= Prices[order - 1];
+this->State = COOK;
+Cash -= Prices[order - 1];
     }
 }
 int Automata::finish() {
     int sym = 0;
     if (this->State == COOK) {
-	this->State = WAIT;
-	sym = Cash;
-	Cash = 0;
+this->State = WAIT;
+sym = Cash;
+Cash = 0;
     }
     return sym;
 }
