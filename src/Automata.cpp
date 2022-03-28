@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include "Automata.h"
 
 using std::cout;
@@ -20,7 +21,7 @@ Automata::Automata() {
 void Automata::on() {
     if (this->State == OFF) {
 this->State = WAIT;
-    }	
+    }
 }
 void Automata::off() {
     if (this->State == WAIT) {
